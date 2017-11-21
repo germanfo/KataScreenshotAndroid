@@ -32,14 +32,22 @@
       app:popupTheme="@style/AppTheme.PopupOverlay"
       />
 
+  <android.support.v4.widget.SwipeRefreshLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/toolbar"
+      tools:showIn="@layout/main_activity"
+      >
+
   <android.support.v7.widget.RecyclerView
       android:id="@+id/recycler_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_below="@id/toolbar"
+
       tools:context="com.karumi.screenshot.ui.view.MainActivity"
-      tools:showIn="@layout/main_activity"
+
       />
+  </android.support.v4.widget.SwipeRefreshLayout>
 
   <android.support.v4.widget.ContentLoadingProgressBar
       android:id="@+id/progress_bar"
