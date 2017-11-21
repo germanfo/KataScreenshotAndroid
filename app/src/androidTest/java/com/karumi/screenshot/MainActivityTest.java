@@ -89,6 +89,27 @@ public class MainActivityTest extends ScreenshotTest {
     compareScreenshot(activity);
   }
 
+  @Test public void showBadgetInTheSecondSuperHeroOfTheList(){
+    givenSomeSuperHeroWithAvengerAtDesiredPosition(10, 1);
+
+    Activity activity = startActivity();
+
+    compareScreenshot(activity);
+  }
+
+  private List<SuperHero> givenSomeSuperHeroWithAvengerAtDesiredPosition(int numberOfSuperHeroes, int desiredAvengerPosition) {
+
+    List<SuperHero> superHeroList = givenThereAreSomeSuperHeroes(numberOfSuperHeroes, false);
+
+    SuperHero actualNotAvengerSuperHeroAtGivenPosition = superHeroList.get(desiredAvengerPosition);
+
+    SuperHero avenger = new SuperHero(actualNotAvengerSuperHeroAtGivenPosition.getName(),actualNotAvengerSuperHeroAtGivenPosition.getPhoto(), true, actualNotAvengerSuperHeroAtGivenPosition.getDescription());
+
+    superHeroList.set(desiredAvengerPosition, avenger);
+
+    return superHeroList;
+  }
+
   private List<SuperHero> givenThereAreSomeSuperHeroes(int numberOfSuperHeroes, boolean avengers) {
     List<SuperHero> superHeroes = new LinkedList<>();
     for (int i = 0; i < numberOfSuperHeroes; i++) {
