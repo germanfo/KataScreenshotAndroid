@@ -57,6 +57,19 @@ public class SuperHeroViewHolderTest extends ScreenshotTest {
     compareScreenshot(holder, R.dimen.super_hero_row_height);
   }
 
+  @Test public void showAvengerWithLongName() {
+    SuperHero superHero = givenAvengerWithALongName();
+    SuperHeroViewHolder holder = givenASuperHeroViewHolder();
+
+    holder.render(superHero);
+
+    compareScreenshot(holder, R.dimen.super_hero_row_height);
+  }
+
+  private SuperHero givenAvengerWithALongName() {
+    return givenASuperHeroWithALongName(true);
+  }
+
   private SuperHeroViewHolder givenASuperHeroViewHolder() {
     Context context = getInstrumentation().getTargetContext();
     LayoutInflater inflater = LayoutInflater.from(context);
@@ -65,6 +78,9 @@ public class SuperHeroViewHolderTest extends ScreenshotTest {
   }
 
   private SuperHero givenASuperHeroWithALongDescription() {
+    return givenASuperHeroWithALongDescription(false);
+  }
+  private SuperHero givenASuperHeroWithALongDescription(boolean isAvenger) {
     String superHeroName = "Super Hero Name";
     String superHeroDescription =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt "
@@ -73,11 +89,14 @@ public class SuperHeroViewHolderTest extends ScreenshotTest {
             + "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
             + "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt "
             + "mollit anim id est laborum.";
-    boolean isAvenger = false;
+
     return givenASuperHero(superHeroName, superHeroDescription, isAvenger);
   }
 
   private SuperHero givenASuperHeroWithALongName() {
+    return givenASuperHeroWithALongName(false);
+  }
+  private SuperHero givenASuperHeroWithALongName(boolean isAvenger) {
     String superHeroName =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt "
             + "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation "
@@ -86,7 +105,7 @@ public class SuperHeroViewHolderTest extends ScreenshotTest {
             + "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt "
             + "mollit anim id est laborum.";
     String superHeroDescription = "Description Super Hero";
-    boolean isAvenger = false;
+
     return givenASuperHero(superHeroName, superHeroDescription, isAvenger);
   }
 
